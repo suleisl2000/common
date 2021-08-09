@@ -26,13 +26,14 @@
 
 cmake_minimum_required (VERSION 3.18)
 
+set(protobuf_MODULE_COMPATIBLE TRUE CACHE BOOL "protobuf_MODULE_COMPATIBLE" FORCE)
+find_package(Protobuf CONFIG REQUIRED)
+message(STATUS "Using self-defined 2 protobuf ${Protobuf_VERSION}")
+
 set(Protobuf_INCLUDE_DIRS "/home/huawei/MindX_SDK/mxManufacture/opensource/include")
 set(Protobuf_LIBRARIES "/home/huawei/MindX_SDK/mxManufacture/opensource/lib/libprotobuf.so.3.9.0.0")
 set(Protobuf_PROTOC_EXECUTABLE "/home/huawei/MindX_SDK/mxManufacture/opensource/bin/protoc-3.9.0.0")
 
-set(protobuf_MODULE_COMPATIBLE TRUE CACHE BOOL "protobuf_MODULE_COMPATIBLE" FORCE)
-#find_package(Protobuf CONFIG REQUIRED)
-message(STATUS "Using self-defined 2 protobuf ${Protobuf_VERSION}")
 include_directories(${Protobuf_INCLUDE_DIRS})
 
 if(${TRITON_COMMON_ENABLE_GRPC})
